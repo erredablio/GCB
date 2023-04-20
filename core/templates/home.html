@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="divider"></div>
+    <div class="row">
+        <div class="col s4">
+            <div class="row">
+                <div class="col s12">
+                    <table class="striped">
+                        <tr>
+                            <th>Data</th>
+                            <th>Nome</th>
+                        </tr>{% for pessoas in pessoas %}
+                        <tr>
+                            <td>{{ pessoas.data }}</td>
+                            <td>{{ pessoas.nome }}</td>
+                        </tr>{% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col s8">
+            <h3>{% for proximo in proximo %}O próximo a comprar os biscoitos é...<p>Nome: <b>{{ proximo.nome }}</b><br>Data: {{ proximo.data }}</p>{% endfor %}</h3>
+            <div class="col s6 offset-s6">
+                <a class="waves-effect waves-light btn-large indigo darken-4" href='{% url 'sortear' %}'><i class="material-icons left">play_arrow</i>Gerar</a>
+                <a class="waves-effect waves-light btn-large orange accent-4" href='{% url 'limpar' %}'><i class="material-icons left">highlight_remove</i>Limpar</a>
+            </div>
+        </div>    
+    </div>
+<div class="divider"></div>
+{% endblock %}
