@@ -1,0 +1,1 @@
+web: gunicorn GCB_Django.wsgi --log-file -
