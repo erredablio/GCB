@@ -2,9 +2,39 @@
 {% block content %}
 <div class="divider"></div>
     <div class="row">
-        <div class="col s4">
+        <div class="col s12">
+            <h1>GCB - Gerenciador de Compras de Biscoitos</h1>
+            <div class="divider"></div>
+        </div>
+    </div>
+    {% for atual in atual %}
+    <div class="row">
+        <div class="col s12 m12 l12">
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 m12 l12">
+                    <div class="card-panel deep-orange accent-3 z-depth-5">
+                        <span class="black-text text-darken-2"><h4><b>{{ atual.nome }}</b> tem que trazer os biscoitos <b>HOJE!</b></h4></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col s12 m8 l8">
+        {% for proximo in proximo %}
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="card-panel brown lighten-2 z-depth-5">
+                    <span class="black-text text-darken-2"><h4>O próximo a comprar os biscoitos é...<p>Nome: <b>{{ proximo.nome }}</b><br>Data: {{ proximo.data }}</p></h4></span>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>    
+        <div class="col s12 m4 l4">
+            <div class="row">
+                <div class="col s12 m12 l12">
                     <table class="striped">
                         <tr>
                             <th>Data</th>
@@ -18,13 +48,12 @@
                 </div>
             </div>
         </div>
-        <div class="col s8">
-            <h3>{% for proximo in proximo %}O próximo a comprar os biscoitos é...<p>Nome: <b>{{ proximo.nome }}</b><br>Data: {{ proximo.data }}</p>{% endfor %}</h3>
-            <div class="col s6 offset-s6">
-                <a class="waves-effect waves-light btn-large indigo darken-4" href='{% url 'sortear' %}'><i class="material-icons left">play_arrow</i>Gerar</a>
-                <a class="waves-effect waves-light btn-large orange accent-4" href='{% url 'limpar' %}'><i class="material-icons left">highlight_remove</i>Limpar</a>
-            </div>
-        </div>    
     </div>
-<div class="divider"></div>
+    <div class="divider"></div>
+    <div class="row">
+        <div class="col s12">
+            <a class="waves-effect waves-light btn-large indigo darken-4" href='{% url 'sortear' %}'><i class="material-icons left">play_arrow</i>Gerar</a>
+            <a class="waves-effect waves-light btn-large orange accent-4" href='{% url 'limpar' %}'><i class="material-icons left">highlight_remove</i>Limpar</a>
+        </div>
+    </div>
 {% endblock %}
