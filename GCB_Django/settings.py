@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://gcb-production.up.railway.app/']
 
 # Application definition
 
@@ -120,25 +122,26 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # Configurações de SMTP
 # https://opensource.com/article/22/12/django-send-emails-smtp
 
+DEFAULT_FROM_EMAIL = "ricwagner1@gmail.com"
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'smtp.yourserver.com'
+EMAIL_HOST = config('EMAIL_HOST')
 
-EMAIL_USE_TLS = False
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 
-EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-EMAIL_USE_SSL = True
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 
-EMAIL_HOST_USER = 'your@djangoapp.com'
-
-EMAIL_HOST_PASSWORD = 'your password'
-
+EMAIL_PORT = config('EMAIL_PORT')
