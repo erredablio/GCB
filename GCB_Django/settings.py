@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
     'corsheaders',
     'core'
 ]
@@ -146,3 +147,14 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 
 EMAIL_PORT = config('EMAIL_PORT')
+
+## Definição do CRONJOBS
+# https://gutsytechster.wordpress.com/2019/06/24/how-to-setup-a-cron-job-in-django/
+# Exemplos:
+#('* 0 * * *', 'core.cron.sortear') #rodar meia noite
+#('* * * * *', 'core.cron.sortear') #rodar a cada minuto
+#('/5 * * * *', 'core.cron.sortear') #rodar a cada 5 minutos
+
+CRONJOBS = [
+    ('/5 * * * *', 'core.cron.executar')
+]

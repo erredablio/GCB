@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Fluid Grid Master</title>
+
+  <style type="text/css">
+
+    /* Outlines the grid, remove when sending */
+    table td { border:1px solid cyan; }
+
+    /* CLIENT-SPECIFIC STYLES */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; }
+
+    /* RESET STYLES */
+    img { border: 0; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+    }
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+
+  </style>    
+</head>
+<body style="margin:0; padding:0; background-color:#F2F2F2;">
+  <center>
+
+    <div style="background-color:#F2F2F2; max-width: 640px; margin: auto;">
+    <!--[if mso]>
+    <table role="presentation" width="640" cellspacing="0" cellpadding="0" border="0" align="center">
+    <tr>
+    <td>
+    <![endif]-->
+
+      <table width="640" cellspacing="0" cellpadding="0" border="0" align="center" style="max-width:640px; width:100%;" bgcolor="#FFFFFF">
+        <tr>
+          <th align="center" valign="top" style="padding:10px;">
+            
+            <table width="600" cellspacing="0" cellpadding="0" border="0" align="center" style="max-width:600px; width:100%;">
+              <tr>
+                <th align="center" valign="top" style="padding:10px;">
+                  <h2>GCB - Gerenciador de Compra de Biscoitos</h2>
+                </th>
+              </tr>
+            </table>
+
+          </th>
+        </tr>
+      </table>
+
+      <table width="640" cellspacing="0" cellpadding="0" border="0" align="left" style="max-width:640px; width:100%;" bgcolor="#FFFFFF">
+        <tr>
+          <th align="left" valign="top" style="padding:10px;">
+            
+            <table width="600" cellspacing="0" cellpadding="0" border="0" align="left" style="max-width:600px; width:100%;">
+              <tr>
+                <th align="left" valign="top" style="padding:10px;">
+                  <p>Abaixo a relação dos selecionados para a compra dos biscoitos gerada em:</p>
+                </th>
+              </tr>
+            </table>
+          </th>
+        </tr>
+      </table>
+      <table width="640" cellspacing="0" cellpadding="0" border="0" align="center" style="max-width:640px; width:100%;" bgcolor="#FFFFFF">
+        <tr>
+          <th align="center" valign="top" style="padding:10px;">
+            <table width="600" cellspacing="0" cellpadding="0" border="0" align="center" style="max-width:600px; width:100%;">
+              <tr>
+                <th width="300" align="center" valign="top" style="padding:10px;">
+                  <b>Data</b>
+                </th>
+                <th width="300" align="center" valign="top" style="padding:10px;">
+                  <b>Nome</b>
+                </th>
+              </tr>{% for relatorio_lista in relatorio_lista %}
+                <tr>
+                    <td width="300" align="center" valign="top" style="padding:10px;">{{ relatorio_lista.data }}</td>
+                    <td width="300" align="center" valign="top" style="padding:10px;">{{ relatorio_lista.nome }}</td>
+                </tr>{% endfor %}
+            </table>
+
+          </th>
+        </tr>
+      </table>
+    <!--[if mso]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </div>
+  </center>
+</body>
+</html>

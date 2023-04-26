@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from datetime import datetime, timedelta
+from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from django.conf import settings
 from .models import Pessoa
 import random
 
@@ -43,16 +45,19 @@ def sortear(request):
             x += 7
             i += 1
 
-    if int(datetime.now().weekday()) == 7:
+    if int(datetime.now().weekday()) == 1:
         i = 0 
         qtd_ativos = Pessoa.objects.filter(status = True, escolhido = True).count()
+        relatorio_lista = Pessoa.objects.filter(status = True, escolhido = True)
         escolhido = Pessoa.objects.filter(status = True, escolhido = True).values_list('email')
+        context = {'relatorio_lista': relatorio_lista}
         for i in range(qtd_ativos):
             subject = 'Relatório Biscoito - '+ datetime.now().strftime("%d/%m/%Y") +''
-            from_email = 'ricwagner1@gmail.com'
+            from_email = settings.DEFAULT_FROM_EMAIL
             message = 'a'
             recipient_list = escolhido[i]
-            html_message = '<b>Relação das próximas semanas</b>'
+            html_template = 'email_relatorio.html'
+            html_message = render_to_string(html_template, context=context)
             send_mail(
                 subject=subject,
                 message=message, 
@@ -63,13 +68,16 @@ def sortear(request):
             i += 1
 
     if Pessoa.objects.filter(status = True, escolhido = True, data__exact=datetime.now() + timedelta(days=1)).count() > 0:
+        escolhido_lista = Pessoa.objects.filter(status = True, escolhido = True, data__exact=datetime.now() + timedelta(days=1))
         atual = Pessoa.objects.filter(status = True, escolhido = True, data__exact=datetime.now() + timedelta(days=1)).values_list('email')
+        context = {'escolhido_lista': escolhido_lista}
 
         subject = 'Você deverá levar os biscoitos AMANHÃ'
-        from_email = 'ricwagner1@gmail.com'
+        from_email = settings.DEFAULT_FROM_EMAIL
         message = 'a'
         recipient_list = atual[0]
-        html_message = '<b>Levar amanhã os biscoitos</b>'
+        html_template = 'email_escolhido.html'
+        html_message = render_to_string(html_template, context=context)
         send_mail(
             subject=subject,
             message=message,
