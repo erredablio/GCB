@@ -1,4 +1,5 @@
-from .views import sortear
+import requests
 
 def executar():
-    sortear
+    response = requests.get('https://gcb-production.up.railway.app/sortear/')
+    return response

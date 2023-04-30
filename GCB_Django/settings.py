@@ -156,5 +156,5 @@ EMAIL_PORT = config('EMAIL_PORT')
 #('/5 * * * *', 'core.cron.sortear') #rodar a cada 5 minutos
 
 CRONJOBS = [
-    ('/5 * * * *', 'core.cron.executar')
+    ('* * * * *', 'core.cron.executar')
 ]
