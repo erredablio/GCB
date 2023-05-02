@@ -45,7 +45,16 @@ def sortear(request):
             x += 7
             i += 1
 
-    if int(datetime.now().weekday()) == 1:
+    if int(datetime.now().weekday()) == 0:
+
+        # 0 = segunda-feira
+        # 1 = terça-feira
+        # 2 = quarta-feira
+        # 3 = quinta-feira
+        # 4 = sexta-feira
+        # 5 = sábado
+        # 6 = domingo
+
         i = 0 
         qtd_ativos = Pessoa.objects.filter(status = True, escolhido = True).count()
         relatorio_lista = Pessoa.objects.filter(status = True, escolhido = True)

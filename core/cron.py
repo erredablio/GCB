@@ -1,5 +1,5 @@
 import requests
 
 def executar():
-    response = requests.get('https://gcb-production.up.railway.app/sortear/')
+    response = requests.get('http://localhost:8000/sortear/')
     return response
